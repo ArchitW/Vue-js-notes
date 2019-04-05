@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="./vue.js" charset="utf-8"></script>
+  <title></title>
+</head>
+
+<body>
+  <pre>
+    v-once :: render html once, if data changes after rendering it will not going to reflect.
+    v-bind:href="link" :: prints the link.
+    v-html="html" :: shows rendered HTML.
+  </pre>
+  <div id="app">
+    <h1 v-once>{{title}}</h1>
+    <p>{{sayHello(' Archit')}} </p> <br>
+    <a v-bind:href="link">Google</a><br>
+    <pre>Default vue escapes HTML</pre><br>
+    <p v-html="finished"></p>
+
+  </div>
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      data: {
+        title: 'Hello World',
+        link: 'http://google.com',
+        finished:'<a href="google.com">Link Via Html</a>'
+      },
+      methods: {
+        sayHello: function(strx) {
+          console.log(this);
+          this.title='this is changed value.. note h1 didnt changed'
+          return 'Hello...' + strx +' '+ this.title;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
